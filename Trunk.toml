@@ -1,0 +1,9 @@
+[build]
+target = "index.html"
+dist = "dist"
+public_url = "./"
+
+[[hooks]]
+stage = "pre_build"
+command = "npx"
+command_arguments = ["@tailwindcss/cli", "-i", "./input.css", "-o", "./style.css"]

@@ -1,0 +1,19 @@
+{
+  "name": "leadership-homer",
+  "version": "1.0.0",
+  "description": "A Leptos (Rust → WASM) page on **ten leadership lessons** from Homer’s *Iliad* and *Odyssey*. Styled with Tailwind CSS: bronze, wine, and marble.",
+  "main": "index.js",
+  "scripts": {
+    "css": "npx @tailwindcss/cli -i ./input.css -o ./style.css",
+    "build": "trunk build --release",
+    "dev": "trunk serve"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  }
+}
