@@ -133,21 +133,21 @@ fn App() -> impl IntoView {
     let (open, set_open) = signal(None::<usize>);
 
     view! {
-        <div class="min-h-screen hero-wash font-sans text-marble">
+        <div class="min-h-screen overflow-x-hidden hero-wash font-sans text-marble">
             <Nav />
             <Hero />
             <Intro />
-            <section id="lessons" class="relative mx-auto max-w-6xl px-5 pb-24 pt-6 md:px-8">
-                <div class="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-                    <div>
-                        <p class="font-display text-sm tracking-[0.35em] text-bronze uppercase">
+            <section id="lessons" class="relative mx-auto max-w-6xl px-4 pb-16 pt-4 sm:px-5 md:px-8 md:pb-24">
+                <div class="mb-8 flex flex-col gap-5 md:mb-10 md:flex-row md:items-end md:justify-between">
+                    <div class="min-w-0">
+                        <p class="font-display text-xs tracking-[0.22em] text-bronze uppercase sm:text-sm sm:tracking-[0.35em]">
                             "The catalogue"
                         </p>
-                        <h2 class="mt-2 font-display text-4xl text-gold md:text-5xl">
+                        <h2 class="mt-2 font-display text-2xl leading-snug text-gold sm:text-4xl md:text-5xl">
                             "Ten commands from the poems"
                         </h2>
                     </div>
-                    <div class="flex flex-wrap gap-2">
+                    <div class="flex w-full min-w-0 flex-wrap gap-2 sm:w-auto">
                         <FilterChip
                             label="All"
                             active=Signal::derive(move || filter.get() == Epic::All)
@@ -194,14 +194,16 @@ fn App() -> impl IntoView {
 fn Nav() -> impl IntoView {
     view! {
         <header class="sticky top-0 z-30 border-b border-bronze/20 bg-navy/80 backdrop-blur-md">
-            <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 md:px-8">
-                <a href="#top" class="flex items-baseline gap-3 no-underline">
-                    <span class="font-display text-2xl tracking-widest text-gold">"ΟΜΗΡΟΣ"</span>
-                    <span class="hidden font-serif text-xl italic text-sand sm:inline">
+            <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-5 sm:py-4 md:px-8">
+                <a href="#top" class="flex min-w-0 items-baseline gap-2 no-underline sm:gap-3">
+                    <span class="font-display text-lg tracking-[0.12em] text-gold sm:text-2xl sm:tracking-widest">
+                        "ΟΜΗΡΟΣ"
+                    </span>
+                    <span class="hidden truncate font-serif text-lg italic text-sand sm:inline md:text-xl">
                         "the homeric command"
                     </span>
                 </a>
-                <nav class="flex gap-6 font-display text-sm tracking-[0.22em] text-sand uppercase">
+                <nav class="flex shrink-0 gap-4 font-display text-[11px] tracking-[0.14em] text-sand uppercase sm:gap-6 sm:text-sm sm:tracking-[0.22em]">
                     <a class="transition hover:text-gold" href="#lessons">
                         "Lessons"
                     </a>
@@ -218,59 +220,59 @@ fn Nav() -> impl IntoView {
 #[component]
 fn Hero() -> impl IntoView {
     view! {
-        <section id="top" class="relative overflow-hidden px-5 pb-20 pt-16 md:px-8 md:pt-24">
+        <section id="top" class="relative overflow-hidden px-4 pb-12 pt-10 sm:px-5 sm:pb-16 sm:pt-16 md:px-8 md:pb-20 md:pt-24">
             <div class="pointer-events-none absolute -right-24 top-10 hidden h-[420px] w-40 border-x border-bronze/15 md:block"></div>
-            <div class="mx-auto grid max-w-6xl items-end gap-12 lg:grid-cols-12">
-                <div class="lg:col-span-7">
-                    <p class="font-display text-base tracking-[0.4em] text-bronze uppercase">
+            <div class="mx-auto grid max-w-6xl items-end gap-8 sm:gap-12 lg:grid-cols-12">
+                <div class="min-w-0 lg:col-span-7">
+                    <p class="font-display text-[11px] leading-relaxed tracking-[0.16em] text-bronze uppercase sm:text-base sm:tracking-[0.4em]">
                         "From the wine-dark sea to the Scaean gates"
                     </p>
-                    <h1 class="mt-5 font-display text-5xl leading-tight text-marble sm:text-6xl md:text-7xl md:leading-[1.08]">
+                    <h1 class="mt-4 font-display text-[2.15rem] leading-[1.12] text-marble sm:mt-5 sm:text-6xl md:text-7xl md:leading-[1.08]">
                         "Leadership,"
                         <span class="block italic text-gold">"sung in hexameter"</span>
                     </h1>
-                    <p class="mt-6 max-w-xl font-serif text-2xl leading-relaxed text-sand md:text-3xl">
+                    <p class="mt-5 max-w-xl font-serif text-lg leading-relaxed text-sand sm:mt-6 sm:text-2xl md:text-3xl">
                         "Ten lessons from Homer’s "
                         <em>"Iliad"</em>
                         " and "
                         <em>"Odyssey"</em>
                         " for anyone who must hold a people together under pressure, pride, and the long way home."
                     </p>
-                    <div class="mt-10 flex flex-wrap items-center gap-4">
+                    <div class="mt-7 flex flex-col items-stretch gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
                         <a
                             href="#lessons"
-                            class="inline-flex items-center gap-2 bg-wine px-6 py-3.5 font-display text-sm tracking-[0.25em] text-marble uppercase transition hover:bg-wine/80"
+                            class="inline-flex items-center justify-center gap-2 bg-wine px-5 py-3.5 text-center font-display text-xs tracking-[0.18em] text-marble uppercase transition hover:bg-wine/80 sm:px-6 sm:text-sm sm:tracking-[0.25em]"
                         >
                             "Open the catalogue"
                         </a>
-                        <p class="font-serif text-lg italic text-sand/80">
+                        <p class="text-center font-serif text-base italic text-sand/80 sm:text-left sm:text-lg">
                             "Wrath. Cunning. Duty. Return."
                         </p>
                     </div>
                 </div>
-                <aside class="column-shadow relative bg-ink/70 p-8 lg:col-span-5">
-                    <div class="meander mb-6 h-2 w-full"></div>
-                    <p class="font-display text-sm tracking-[0.3em] text-bronze uppercase">
+                <aside class="column-shadow relative min-w-0 bg-ink/70 p-5 sm:p-8 lg:col-span-5">
+                    <div class="meander mb-5 h-2 w-full sm:mb-6"></div>
+                    <p class="font-display text-xs tracking-[0.22em] text-bronze uppercase sm:text-sm sm:tracking-[0.3em]">
                         "Invocation"
                     </p>
-                    <blockquote class="mt-4 font-serif text-3xl leading-snug text-marble italic">
+                    <blockquote class="mt-4 font-serif text-xl leading-snug text-marble italic sm:text-3xl">
                         "A leader is not the loudest in the assembly, nor the first to claim the spoil—but the one who still knows the way to Ithaca when the crew has forgotten the stars."
                     </blockquote>
-                    <p class="mt-6 font-display text-sm tracking-widest text-gold">
+                    <p class="mt-5 font-display text-xs tracking-[0.18em] text-gold sm:mt-6 sm:text-sm sm:tracking-widest">
                         "— after Homer"
                     </p>
-                    <dl class="mt-8 grid grid-cols-3 gap-3 border-t border-bronze/20 pt-6 text-center">
-                        <div>
-                            <dt class="font-display text-4xl text-gold">"10"</dt>
-                            <dd class="mt-1 font-serif text-lg text-sand">"lessons"</dd>
+                    <dl class="mt-6 grid grid-cols-3 gap-2 border-t border-bronze/20 pt-5 text-center sm:mt-8 sm:gap-3 sm:pt-6">
+                        <div class="min-w-0">
+                            <dt class="font-display text-2xl text-gold sm:text-4xl">"10"</dt>
+                            <dd class="mt-1 font-serif text-sm text-sand sm:text-lg">"lessons"</dd>
                         </div>
-                        <div>
-                            <dt class="font-display text-4xl text-gold">"2"</dt>
-                            <dd class="mt-1 font-serif text-lg text-sand">"epics"</dd>
+                        <div class="min-w-0">
+                            <dt class="font-display text-2xl text-gold sm:text-4xl">"2"</dt>
+                            <dd class="mt-1 font-serif text-sm text-sand sm:text-lg">"epics"</dd>
                         </div>
-                        <div>
-                            <dt class="font-display text-4xl text-gold">"1"</dt>
-                            <dd class="mt-1 font-serif text-lg text-sand">"homecoming"</dd>
+                        <div class="min-w-0">
+                            <dt class="font-display text-2xl text-gold sm:text-4xl">"1"</dt>
+                            <dd class="mt-1 font-serif text-sm text-sand sm:text-lg">"homecoming"</dd>
                         </div>
                     </dl>
                 </aside>
@@ -282,8 +284,8 @@ fn Hero() -> impl IntoView {
 #[component]
 fn Intro() -> impl IntoView {
     view! {
-        <section class="mx-auto max-w-6xl px-5 pb-8 md:px-8">
-            <div class="grid gap-6 border-y border-bronze/20 py-12 md:grid-cols-3">
+        <section class="mx-auto max-w-6xl px-4 pb-6 sm:px-5 md:px-8 md:pb-8">
+            <div class="grid gap-8 border-y border-bronze/20 py-8 sm:gap-6 sm:py-12 md:grid-cols-3">
                 <IntroPill
                     kicker="Iliad"
                     title="The cost of command"
@@ -307,10 +309,10 @@ fn Intro() -> impl IntoView {
 #[component]
 fn IntroPill(kicker: &'static str, title: &'static str, body: &'static str) -> impl IntoView {
     view! {
-        <div class="px-1">
-            <p class="font-display text-sm tracking-[0.3em] text-bronze uppercase">{kicker}</p>
-            <h3 class="mt-2 font-display text-2xl text-gold">{title}</h3>
-            <p class="mt-3 font-serif text-xl leading-relaxed text-sand">{body}</p>
+        <div class="min-w-0 px-0 sm:px-1">
+            <p class="font-display text-xs tracking-[0.22em] text-bronze uppercase sm:text-sm sm:tracking-[0.3em]">{kicker}</p>
+            <h3 class="mt-2 font-display text-xl text-gold sm:text-2xl">{title}</h3>
+            <p class="mt-3 font-serif text-lg leading-relaxed text-sand sm:text-xl">{body}</p>
         </div>
     }
 }
@@ -326,9 +328,9 @@ where
             on:click=on_click
             class=move || {
                 if active.get() {
-                    "border border-gold bg-gold/15 px-5 py-2.5 font-display text-sm tracking-[0.25em] text-gold uppercase"
+                    "min-h-11 flex-1 border border-gold bg-gold/15 px-3 py-2.5 font-display text-xs tracking-[0.16em] text-gold uppercase sm:flex-none sm:px-5 sm:text-sm sm:tracking-[0.25em]"
                 } else {
-                    "border border-bronze/30 px-5 py-2.5 font-display text-sm tracking-[0.25em] text-sand uppercase transition hover:border-gold/50 hover:text-gold"
+                    "min-h-11 flex-1 border border-bronze/30 px-3 py-2.5 font-display text-xs tracking-[0.16em] text-sand uppercase transition hover:border-gold/50 hover:text-gold sm:flex-none sm:px-5 sm:text-sm sm:tracking-[0.25em]"
                 }
             }
         >
@@ -357,43 +359,43 @@ fn LessonCard(
                 let hidden = if visible() { "" } else { "hidden" };
                 let glow = if is_open() { " card-open" } else { "" };
                 format!(
-                    "{hidden}{glow} relative overflow-hidden border border-bronze/20 bg-ink/55 p-7 transition duration-300 hover:border-bronze/50",
+                    "{hidden}{glow} relative min-w-0 overflow-hidden border border-bronze/20 bg-ink/55 p-5 transition duration-300 hover:border-bronze/50 sm:p-7",
                 )
             }
         >
-            <span class="pointer-events-none absolute -right-1 -top-3 font-display text-7xl text-bronze/10 select-none md:text-8xl">
+            <span class="pointer-events-none absolute -right-1 -top-3 font-display text-6xl text-bronze/10 select-none sm:text-7xl md:text-8xl">
                 {lesson.numeral}
             </span>
-            <div class="flex items-start justify-between gap-4">
-                <div>
-                    <p class="font-display text-sm tracking-[0.3em] text-bronze uppercase">
+            <div class="relative flex items-start justify-between gap-3">
+                <div class="min-w-0">
+                    <p class="font-display text-[11px] leading-relaxed tracking-[0.16em] text-bronze uppercase sm:text-sm sm:tracking-[0.3em]">
                         {lesson.epic_label}
                         " · "
                         {lesson.figure}
                     </p>
-                    <h3 class="mt-2 max-w-[16ch] font-display text-3xl text-marble">
+                    <h3 class="mt-2 font-display text-2xl leading-snug text-marble sm:text-3xl">
                         {lesson.title}
                     </h3>
                 </div>
-                <span class="font-display text-lg text-gold">{lesson.numeral}</span>
+                <span class="shrink-0 font-display text-base text-gold sm:text-lg">{lesson.numeral}</span>
             </div>
-            <blockquote class="mt-5 border-l-2 border-wine pl-4 font-serif text-xl text-sand italic md:text-2xl">
+            <blockquote class="mt-4 border-l-2 border-wine pl-3 font-serif text-lg leading-snug text-sand italic sm:mt-5 sm:pl-4 sm:text-xl md:text-2xl">
                 {lesson.quote}
             </blockquote>
-            <p class="mt-4 font-serif text-xl leading-relaxed text-marble/90">{lesson.insight}</p>
+            <p class="mt-4 font-serif text-lg leading-relaxed text-marble/90 sm:text-xl">{lesson.insight}</p>
             <Show when=is_open fallback=move || view! { <></> }>
                 <div class="mt-5 border-t border-bronze/20 pt-5">
-                    <p class="font-display text-sm tracking-[0.3em] text-gold uppercase">
+                    <p class="font-display text-xs tracking-[0.22em] text-gold uppercase sm:text-sm sm:tracking-[0.3em]">
                         "In the field"
                     </p>
-                    <p class="mt-2 font-serif text-xl leading-relaxed text-foam">
+                    <p class="mt-2 font-serif text-lg leading-relaxed text-foam sm:text-xl">
                         {lesson.practice}
                     </p>
                 </div>
             </Show>
             <button
                 type="button"
-                class="mt-6 font-display text-sm tracking-[0.25em] text-bronze uppercase transition hover:text-gold"
+                class="mt-5 min-h-11 font-display text-xs tracking-[0.16em] text-bronze uppercase transition hover:text-gold sm:mt-6 sm:text-sm sm:tracking-[0.25em]"
                 on:click=move |_| {
                     set_open
                         .update(|cur| {
@@ -412,16 +414,16 @@ fn LessonCard(
 #[component]
 fn Coda() -> impl IntoView {
     view! {
-        <section id="coda" class="relative px-5 py-24 md:px-8">
+        <section id="coda" class="relative px-4 py-16 sm:px-5 sm:py-24 md:px-8">
             <div class="meander absolute top-0 left-0 h-2 w-full"></div>
             <div class="mx-auto max-w-3xl text-center">
-                <p class="font-display text-base tracking-[0.35em] text-bronze uppercase">
+                <p class="font-display text-xs tracking-[0.22em] text-bronze uppercase sm:text-base sm:tracking-[0.35em]">
                     "Nostos"
                 </p>
-                <h2 class="mt-4 font-display text-4xl text-gold md:text-6xl">
+                <h2 class="mt-3 font-display text-3xl leading-tight text-gold sm:mt-4 sm:text-4xl md:text-6xl">
                     "Bring them home"
                 </h2>
-                <p class="mt-6 font-serif text-2xl leading-relaxed text-sand md:text-3xl">
+                <p class="mt-5 font-serif text-lg leading-relaxed text-sand sm:mt-6 sm:text-2xl md:text-3xl">
                     "The Iliad ends in a funeral; the Odyssey ends in a marriage restored. Homer’s last word on command is not the body count. It is whether the people you led still have a hearth, a name, and a future. Win the day if you must. Measure yourself by the return."
                 </p>
             </div>
@@ -432,10 +434,10 @@ fn Coda() -> impl IntoView {
 #[component]
 fn Footer() -> impl IntoView {
     view! {
-        <footer class="border-t border-bronze/20 px-5 py-8 md:px-8">
-            <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 font-serif text-lg text-sand/70 md:flex-row">
-                <p>"The Homeric Command · leadership from the Iliad & Odyssey"</p>
-                <p class="font-display text-sm tracking-[0.25em] uppercase">
+        <footer class="border-t border-bronze/20 px-4 py-6 sm:px-5 sm:py-8 md:px-8">
+            <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 text-center font-serif text-base text-sand/70 sm:gap-3 sm:text-lg md:flex-row md:text-left">
+                <p class="max-w-prose">"The Homeric Command · leadership from the Iliad & Odyssey"</p>
+                <p class="font-display text-[11px] tracking-[0.16em] uppercase sm:text-sm sm:tracking-[0.25em]">
                     "Leptos · WASM · Tailwind"
                 </p>
             </div>
